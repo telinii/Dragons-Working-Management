@@ -1,0 +1,26 @@
+<mat-card style="max-width:400px;margin:40px auto">
+  <mat-card-title>Criar conta</mat-card-title>
+  <mat-card-content style="display:flex;flex-direction:column;gap:12px;margin-top:12px">
+    <mat-form-field>
+      <mat-label>Nome</mat-label>
+      <input matInput [(ngModel)]="name" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Email</mat-label>
+      <input matInput [(ngModel)]="email" type="email" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Senha</mat-label>
+      <input matInput [(ngModel)]="password" type="password" />
+    </mat-form-field>
+    <mat-form-field>
+      <mat-label>Fuso</mat-label>
+      <mat-select [(ngModel)]="timezone">
+        @for (f of fusos; track f) { <mat-option [value]="f">{{ f }}</mat-option> }
+      </mat-select>
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="cadastrar()">Cadastrar</button>
+    @if (erro) { <p>{{ erro }}</p> }
+    <p><a href="/login">Já tenho conta</a></p>
+  </mat-card-content>
+</mat-card>

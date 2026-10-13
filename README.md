@@ -78,6 +78,9 @@ Se já tiver SQL Server nativo no Windows, use `DB_HOST=localhost` e `DB_PORT=14
 
 ## Primeiro uso
 
+Acesse `http://localhost:4200/cadastro`, crie sua conta (escolha o fuso) e entre em `/login` → `/ponto` (Entrada, Pausa, Saída) → `/historico` (consulta do mês, com hora local convertida).
+
+Via API, o equivalente:
 ```bash
 # criar usuário
 curl -X POST http://localhost:3000/users \

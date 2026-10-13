@@ -18,7 +18,7 @@ export class Historico implements OnInit {
   month = '2026-10';
   eventos: any[] = [];
   msg = '';
-  colunas = ['type', 'timestampUtc', 'timezone'];
+  colunas = ['type', 'timestampUtc', 'horaLocal', 'timezone'];
 
   ngOnInit() { this.carregar(); }
 
@@ -29,4 +29,12 @@ export class Historico implements OnInit {
       error: () => this.msg = 'erro ao carregar',
     });
   }
+  formatarLocal(utc: string, tz: string) {
+  try {
+    return new Intl.DateTimeFormat('pt-BR', {
+      timeZone: tz, day: '2-digit', month: '2-digit',
+      hour: '2-digit', minute: '2-digit',
+    }).format(new Date(utc));
+  } catch { return utc; }
+}
 }
