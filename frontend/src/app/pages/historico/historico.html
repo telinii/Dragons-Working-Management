@@ -1,10 +1,29 @@
-<h2>Histórico</h2>
-<input [(ngModel)]="month" placeholder="2026-10" />
-<button (click)="carregar()">Carregar</button>
-<p>{{ msg }}</p>
-<ul>
-  @for (e of eventos; track e.id) {
-    <li>{{ e.type }} — {{ e.timestampUtc }} ({{ e.timezone }})</li>
-  }
-</ul>
-<p><a href="/ponto">Voltar ao ponto</a></p>
+<mat-card style="max-width:760px;margin:24px auto">
+  <mat-card-title>Histórico</mat-card-title>
+  <mat-card-content style="display:flex;gap:8px;margin:12px 0">
+    <mat-form-field>
+      <mat-label>Mês (AAAA-MM)</mat-label>
+      <input matInput [(ngModel)]="month" placeholder="2026-10" />
+    </mat-form-field>
+    <button mat-raised-button color="primary" (click)="carregar()">Carregar</button>
+  </mat-card-content>
+  <mat-card-content>
+    <p>{{ msg }}</p>
+    <table mat-table [dataSource]="eventos" style="width:100%">
+      <ng-container matColumnDef="type">
+        <th mat-header-cell *matHeaderCellDef>Evento</th>
+        <td mat-cell *matCellDef="let e">{{ e.type }}</td>
+      </ng-container>
+      <ng-container matColumnDef="timestampUtc">
+        <th mat-header-cell *matHeaderCellDef>Data/hora (UTC)</th>
+        <td mat-cell *matCellDef="let e">{{ e.timestampUtc }}</td>
+      </ng-container>
+      <ng-container matColumnDef="timezone">
+        <th mat-header-cell *matHeaderCellDef>Fuso</th>
+        <td mat-cell *matCellDef="let e">{{ e.timezone }}</td>
+      </ng-container>
+      <tr mat-header-row *matHeaderRowDef="colunas"></tr>
+      <tr mat-row *matRowDef="let row; columns: colunas;"></tr>
+    </table>
+  </mat-card-content>
+</mat-card>

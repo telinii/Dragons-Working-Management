@@ -1,7 +1,10 @@
-<h2>Bater ponto</h2>
-<button (click)="bater('CLOCK_IN')">Entrada</button>
-<button (click)="bater('BREAK_START')">Início pausa</button>
-<button (click)="bater('BREAK_END')">Fim pausa</button>
-<button (click)="bater('CLOCK_OUT')">Saída</button>
-<p>{{ msg }}</p>
-<p><a href="/historico">Ver histórico</a></p>
+<mat-card style="max-width:560px;margin:24px auto">
+  <mat-card-title>Bater ponto</mat-card-title>
+  <mat-card-content style="display:flex;gap:8px;flex-wrap:wrap;margin-top:12px">
+    <button mat-raised-button color="primary" (click)="bater('CLOCK_IN')">Entrada</button>
+    <button mat-stroked-button (click)="bater('BREAK_START')">Início pausa</button>
+    <button mat-stroked-button (click)="bater('BREAK_END')">Fim pausa</button>
+    <button mat-raised-button color="warn" (click)="bater('CLOCK_OUT')">Saída</button>
+  </mat-card-content>
+  <mat-card-content><p>{{ msg }}</p></mat-card-content>
+</mat-card>

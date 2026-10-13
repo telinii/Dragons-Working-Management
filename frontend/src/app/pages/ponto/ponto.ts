@@ -1,8 +1,10 @@
 import { Component, inject } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
+import { MatButtonModule } from '@angular/material/button';
 import { Jornada, EventType } from '../../core/jornada';
 
 @Component({
-  imports: [],
+  imports: [MatCardModule, MatButtonModule],
   selector: 'app-ponto',
   styleUrl: './ponto.scss',
   templateUrl: './ponto.html',
