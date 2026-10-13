@@ -37,4 +37,7 @@ export class Historico implements OnInit {
     }).format(new Date(utc));
   } catch { return utc; }
 }
+  rotulo(t: string) {
+  return { CLOCK_IN: 'Entrada', BREAK_START: 'Início de pausa', BREAK_END: 'Fim de pausa', CLOCK_OUT: 'Saída' }[t] ?? t;
+}
 }

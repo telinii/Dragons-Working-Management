@@ -12,7 +12,7 @@
     <table mat-table [dataSource]="eventos" style="width: 100%">
       <ng-container matColumnDef="type">
         <th mat-header-cell *matHeaderCellDef>Evento</th>
-        <td mat-cell *matCellDef="let e">{{ e.type }}</td>
+        <td mat-cell *matCellDef="let e">{{ rotulo(e.type) }}</td>
       </ng-container>
       <ng-container matColumnDef="timestampUtc">
         <th mat-header-cell *matHeaderCellDef>Data/hora (UTC)</th>
