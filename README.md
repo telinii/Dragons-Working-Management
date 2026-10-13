@@ -106,7 +106,7 @@ Tipos de evento: `CLOCK_IN`, `BREAK_START`, `BREAK_END`, `CLOCK_OUT`.
 ```
 ./
   backend/    # NestJS (src/users, src/auth, src/work-events)
-  frontend/   # Angular (core/auth, core/jornada, pages/login, ponto, historico)
+  frontend/   # Angular Material (core/auth, core/jornada, pages/login, cadastro, ponto, historico)
 ```
 
 ## Limitações conhecidas (v1)
