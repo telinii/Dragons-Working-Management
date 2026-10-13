@@ -1,0 +1,19 @@
+instrucoes
+Desafio Técnico — Plataforma de Jornada.md
+
+# deps / build
+node_modules/
+dist/
+build/
+coverage/
+
+# angular / nest
+.angular/
+frontend/dist/
+backend/dist/
+
+# env / sistema
+.env
+.env.local
+.DS_Store
+*.log
