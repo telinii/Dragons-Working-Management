@@ -16,4 +16,5 @@ backend/dist/
 .env
 .env.local
 .DS_Store
-*.log*.tsbuildinfo
+*.log
+*.tsbuildinfo
