@@ -30,8 +30,13 @@ Primeira versão da plataforma interna de registro de jornada (Dungeons & Dragon
 git clone https://github.com/telinii/Dragons-Working-Management.git
 cd Dragons-Working-Management
 
-# 2. banco
-# crie o database JornadaDb no seu SQL Server (login SA)
+# 2. banco — crie o database JornadaDb (login SA)
+# via sqlcmd (Linux/macOS, usando a imagem Docker só como client):
+docker run --rm --network host mcr.microsoft.com/mssql/server:2022-latest \
+  /opt/mssql-tools18/bin/sqlcmd -S localhost -U SA -P 'sua-senha' \
+  -Q "IF DB_ID('JornadaDb') IS NULL CREATE DATABASE JornadaDb" -C
+# no Windows com SSMS/Azure Data Studio: conecte em localhost e rode
+# CREATE DATABASE JornadaDb;
 
 # 3. backend
 cd backend
@@ -45,14 +50,14 @@ npm install
 npm start              # http://localhost:4200
 ```
 
-**`backend/.env`** (não commitado):
+**`backend/.env`** (não commitado — preencha tudo, o backend não sobe sem `DB_PASS` e `JWT_SECRET`):
 ```
 DB_HOST=localhost
 DB_PORT=1433
 DB_USER=SA
 DB_PASS=sua-senha
 DB_NAME=JornadaDb
-JWT_SECRET=troque-em-producao
+JWT_SECRET=uma-string-longa-qualquer
 ```
 
 Com Docker (banco alternativo — Linux/macOS):
