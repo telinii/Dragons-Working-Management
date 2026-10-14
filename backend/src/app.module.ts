@@ -17,7 +17,7 @@ import { WorkEvent } from './work-events/work-event.entity';
       host: process.env.DB_HOST ?? 'localhost',
       port: Number(process.env.DB_PORT ?? 1433),
       username: process.env.DB_USER ?? 'SA',
-      password: process.env.DB_PASS ?? 'LTC2006_',
+      password: process.env.DB_PASS,
       database: process.env.DB_NAME ?? 'JornadaDb',
       entities: [User, WorkEvent],
       synchronize: true, // só dev
