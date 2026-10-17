@@ -21,4 +21,8 @@ export class Jornada {
   historico(month: string) {
     return this.http.get<any[]>(`${this.api}/work-events/me?month=${month}`, this.headers());
   }
+
+  resumo(month: string) {
+    return this.http.get<any>(`${this.api}/work-events/me/summary?month=${month}`, this.headers());
+  }
 }

@@ -28,4 +28,8 @@ export class UsersService {
   findAll() {
     return this.repo.find();
   }
+
+  findById(id: string) {
+  return this.repo.findOneBy({ id });
+}
 }

@@ -3,11 +3,14 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 import { WorkEvent } from './work-event.entity';
 import { CreateWorkEventDto } from './create-work-event.dto';
+import { UsersService } from '../users/users.service';
+import { calcularResumo } from './work-calc';
 
 @Injectable()
 export class WorkEventsService {
   constructor(
     @InjectRepository(WorkEvent) private repo: Repository<WorkEvent>,
+    private users: UsersService
   ) {}
 
   private async lastEvent(userId: string) {
@@ -47,6 +50,14 @@ export class WorkEventsService {
     });
     return this.repo.save(ev);
   }
+
+  async listSummary(userId: string, month: string) {
+  const eventos = await this.listByMonth(userId, month);
+  const user = await this.users.findById(userId);
+  return calcularResumo(eventos, user?.timezone ?? 'America/Sao_Paulo');
+}
+
+  
 
   listByMonth(userId: string, month: string) {
     // month=2026-10

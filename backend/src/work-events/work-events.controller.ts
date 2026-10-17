@@ -24,4 +24,9 @@ export class WorkEventsController {
   list(@Req() req: any, @Query('month') month: string) {
     return this.service.listByMonth(req.user.sub, month);
   }
+
+  @Get('me/summary')
+  summary(@Req() req: any, @Query('month') month: string) {
+    return this.service.listSummary(req.user.sub, month);
+}
 }

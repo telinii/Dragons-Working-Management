@@ -22,13 +22,28 @@ export class Historico implements OnInit {
 
   ngOnInit() { this.carregar(); }
 
+  resumo: any = null
+
   carregar() {
     this.msg = 'carregando...';
-    this.jornada.historico(this.month).subscribe({
-      next: (res) => { this.eventos = res; this.msg = `${res.length} eventos`; },
-      error: () => this.msg = 'erro ao carregar',
-    });
-  }
+  this.jornada.historico(this.month).subscribe({
+    next: (res) => { this.eventos = res; this.msg = `${res.length} eventos`; this.carregarResumo(); },
+    error: () => this.msg = 'erro ao carregar',
+  });
+}
+
+  carregarResumo() {
+  this.jornada.resumo(this.month).subscribe({
+    next: (r) => this.resumo = r,
+    error: () => this.resumo = null,
+  });
+}
+
+  formatarMinutos(m: number) {
+  const h = Math.floor(m / 60), min = m % 60;
+  return `${h}h${min.toString().padStart(2, '0')}`;
+}
+
   formatarLocal(utc: string, tz: string) {
   try {
     return new Intl.DateTimeFormat('pt-BR', {

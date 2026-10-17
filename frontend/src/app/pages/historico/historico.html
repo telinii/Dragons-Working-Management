@@ -1,3 +1,15 @@
+@if (resumo) {
+  <mat-card style="margin-bottom:16px;background:#f5f5f5">
+    <mat-card-content>
+      <h3 style="margin:0 0 8px">Total de {{ month }}: {{ formatarMinutos(resumo.totalMinutos) }}</h3>
+      <ul style="margin:0;padding-left:18px">
+        @for (d of resumo.dias; track d.data) {
+          <li>{{ d.data }} — {{ formatarMinutos(d.minutos) }} @if (d.aberto) { (em andamento) }</li>
+        }
+      </ul>
+    </mat-card-content>
+  </mat-card>
+}
 <mat-card style="max-width: 760px; margin: 24px auto">
   <mat-card-title>Histórico</mat-card-title>
   <mat-card-content style="display: flex; gap: 8px; margin: 12px 0">
